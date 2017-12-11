@@ -7,12 +7,12 @@ const projectSchema = new mongoose.Schema(
     description: String,
     category: String,
     country: String,
-    images: [],
+    images: [String],
     fundingGoal: Number,
     currentFunding: Number,
     fundingDuration: Number,
-    backers: [],
-    owner: []
+    backers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   },
   {
     timestamps: true

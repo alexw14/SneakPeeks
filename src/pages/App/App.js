@@ -14,7 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      projects: []
     }
   }
 
@@ -34,7 +34,11 @@ class App extends Component {
   // Lifecycle Methods
   componentDidMount() {
     let user = userService.getUser();
-    this.setState({user});
+    let findProjects = fetch('/api/projects').then(res => res.json());
+    Promise.all([user, findProjects]).then(data => {
+      console.log(data);
+      this.setState({user: data[0], findProjects: data[1]});
+    });
   }
 
   render() {
@@ -48,8 +52,11 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <Home />
           }/>
-          <Route exact path='/projects' render={() =>
-            <Projects />
+          <Route exact path='/projects' render={(props) =>
+            <Projects 
+              {...props}
+              projects={this.state.projects}
+            />
           }/>
           <Route exact path='/projects/new' render={(props) =>
             <NewProject 
