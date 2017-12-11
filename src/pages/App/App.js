@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Home from '../Home/Home';
 import Projects from '../Projects/Projects';
+import SignUp from '../SignUp/SignUp';
 import userService from '../../utils/userService';
 
 class App extends Component {
@@ -15,6 +16,10 @@ class App extends Component {
     }
   }
 
+  handleSignUp = () => {
+    this.setState({user: userService.getUser()});
+  }
+  
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
@@ -39,6 +44,12 @@ class App extends Component {
           }/>
           <Route exact path='/projects' render={() =>
             <Projects />
+          }/>
+          <Route exact path='/signup' render={(props) =>
+            <SignUp 
+              {...props}
+              handleSignUp={this.handleSignUp}
+            /> 
           }/>
         </Switch>
       </div>
