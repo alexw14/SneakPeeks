@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Home from '../Home/Home';
 import Projects from '../Projects/Projects';
+import userService from '../../utils/userService';
 
 class App extends Component {
 
@@ -14,10 +15,24 @@ class App extends Component {
     }
   }
 
+  handleLogout = () => {
+    userService.logout();
+    this.setState({user: null});
+  }
+
+  // Lifecycle Methods
+  componentDidMount() {
+    let user = userService.getUser();
+    this.setState({user});
+  }
+
   render() {
     return (
       <div className='App'>
-        <Navbar />
+        <Navbar 
+          user={this.state.user}
+          handleLogout={this.handleLogout} 
+        />
         <Switch>
           <Route exact path='/' render={() =>
             <Home />
