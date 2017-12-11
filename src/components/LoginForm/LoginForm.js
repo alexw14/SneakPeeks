@@ -33,16 +33,16 @@ class LoginForm extends Component {
       <div>
         <header>Log In</header>
         <form onSubmit={this.handleSubmit}>
-          <div className="grid-container">
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+          <div className='container'>
+            <div>
+              <div style={{margin: '0 auto'}}>
                 <label>Email
                     <input type="text" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div>
+              <div style={{margin: '0 auto'}}>
                 <label>Password
                     <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
                 </label>

@@ -42,7 +42,7 @@ class SignUpForm extends Component {
       <div>
         <header>Sign Up</header>
         <form onSubmit={this.handleSubmit}>
-          <div className="">
+          <div className='container'>
             <div className="">
               <div className="" style={{margin: '0 auto'}}>
                 <label>Name

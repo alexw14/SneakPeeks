@@ -4,7 +4,9 @@ import NewProjectForm from '../../components/NewProjectForm/NewProjectForm';
 const NewProject = (props) => {
   return (
     <div>
-      <NewProjectForm />
+      <NewProjectForm 
+        {...props}
+      />
     </div>
   )
 }

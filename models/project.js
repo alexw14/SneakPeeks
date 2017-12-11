@@ -4,7 +4,7 @@ const projectSchema = new mongoose.Schema(
   {
     title: String,
     subtitle: String,
-    description: Text,
+    description: String,
     category: String,
     country: String,
     images: [],
