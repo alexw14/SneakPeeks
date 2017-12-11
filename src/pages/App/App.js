@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Home from '../Home/Home';
 import Projects from '../Projects/Projects';
 import SignUp from '../SignUp/SignUp';
+import Login from '../Login/Login';
 import userService from '../../utils/userService';
 
 class App extends Component {
@@ -20,6 +21,10 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
   
+  handleLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
@@ -50,6 +55,12 @@ class App extends Component {
               {...props}
               handleSignUp={this.handleSignUp}
             /> 
+          }/>
+          <Route exact path='/login' render={(props) => 
+            <Login
+              {...props}
+              handleLogin={this.handleLogin}
+            />
           }/>
         </Switch>
       </div>

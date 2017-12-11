@@ -14,6 +14,21 @@ function signup(user) {
   .then(({token}) => token); // Parameter destructuring
 }
 
+function login(creds) {
+  return fetch(BASE_URL + 'login', {
+    method: 'POST',
+    headers: new Headers({'Content-Type': 'application/json'}),
+    body: JSON.stringify(creds)
+  })
+  .then(res => {
+    // Valid login if we have a status of 2xx
+    if (res.ok) return res.json();
+    throw new Error('Bad credentials');
+  })
+  .then(({token}) => token);
+}
+
 export default {
-  signup
+  signup,
+  login
 };

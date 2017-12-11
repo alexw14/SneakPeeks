@@ -9,6 +9,10 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
+function login(user) {
+  return userAPI.login(user).then(token => tokenService.setToken(token));
+}
+
 function logout() {
   tokenService.removeToken();
 }
@@ -16,5 +20,6 @@ function logout() {
 export default {
   signup,
   getUser,
+  login,
   logout
 };
