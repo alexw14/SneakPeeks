@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
+import Nav from '../../components/Nav/Nav';
 import Home from '../Home/Home';
 import Projects from '../Projects/Projects';
+import NewProject from '../NewProject/NewProject';
 import SignUp from '../SignUp/SignUp';
 import Login from '../Login/Login';
 import userService from '../../utils/userService';
@@ -39,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Navbar 
+        <Nav 
           user={this.state.user}
           handleLogout={this.handleLogout} 
         />
@@ -49,6 +50,9 @@ class App extends Component {
           }/>
           <Route exact path='/projects' render={() =>
             <Projects />
+          }/>
+          <Route exact path='/projects/new' render={() =>
+            <NewProject />
           }/>
           <Route exact path='/signup' render={(props) =>
             <SignUp 

@@ -44,7 +44,7 @@ class LoginForm extends Component {
             <div className="grid-x grid-padding-x">
               <div className="small-6 cell" style={{margin: '0 auto'}}>
                 <label>Password
-                    <input type="text" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
+                    <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
                 </label>
               </div>
             </div>

@@ -42,51 +42,51 @@ class SignUpForm extends Component {
       <div>
         <header>Sign Up</header>
         <form onSubmit={this.handleSubmit}>
-          <div className="grid-container">
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+          <div className="">
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Name
                     <input type="text" placeholder="Name" value={this.state.name} onChange={(e) => this.handleChange('name', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Email
-                    <input type="text" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
+                    <input type="email" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Password
-                    <input type="text" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
+                    <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Biography
                     <textarea placeholder="Biography" value={this.state.biography} onChange={(e) => this.handleChange('biography', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Website
                     <input type="text" placeholder="Website" value={this.state.website} onChange={(e) => this.handleChange('website', e)} />
                 </label>
               </div>
             </div>
-            <div className="grid-x grid-padding-x">
-              <div className="small-6 cell" style={{margin: '0 auto'}}>
+            <div className="">
+              <div className="" style={{margin: '0 auto'}}>
                 <label>Profile Picture
-                    <input type="text" placeholder="Profile Picture" value={this.state.avatar} onChange={(e) => this.handleChange('avatar', e)} />
+                    <input type="url" placeholder="Profile Picture" value={this.state.avatar} onChange={(e) => this.handleChange('avatar', e)} />
                 </label>
               </div>
             </div>
             <div>
-              <button type="submit" className="button large primary" disabled={this.isFormValid()}>Create My Account</button>
+              <button type="submit" className="" disabled={this.isFormValid()}>Create My Account</button>
             </div>
             <Link to='/'>Cancel</Link>
           </div>
@@ -94,7 +94,6 @@ class SignUpForm extends Component {
       </div>
     )
   }
-
 }
 
 export default SignUpForm;
