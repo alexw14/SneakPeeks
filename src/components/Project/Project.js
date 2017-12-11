@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 const Project = (props) => {
+
   return (
     <div>
-      <h1>Projects</h1>
+      {props.projects ? <h1>{props.projects[0].title}</h1> : <h1>Loading</h1>}
     </div>
   )
-};
+}
 
 export default Project;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
-class SignUp extends Component {
+class SignUpPage extends Component {
   constructor(props) {
     super(props);
     this.state = {message: ''}
@@ -26,4 +26,4 @@ class SignUp extends Component {
 
 }
 
-export default SignUp;
+export default SignUpPage;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import projectAPI from '../../utils/projectAPI';
+import { Row, Input } from 'react-materialize';
 
 class NewProjectForm extends Component {
   constructor(props) {
@@ -10,9 +11,8 @@ class NewProjectForm extends Component {
       subtitle: '',
       description: '',
       category: '',
-      country: '',
-      fundingGoal: '',
-      fundingDuration: '',
+      fundingGoal: null,
+      fundingDuration: null,
       images: [],
     }
   }
@@ -35,54 +35,37 @@ class NewProjectForm extends Component {
     return (
       <div>
         <header>Creat a New Project!</header>
-        <form onSubmit={this.handleSubmit}>
-          <div className='container'>
-            <div>
-              <label>Title
-              <input type='text' placeholder='Title' value={this.state.title} onChange={(e) => this.handleChange('title', e)} />
+        <div className='container'>
+          <form onSubmit={this.handleSubmit}>
+            <Row>
+              <Input s={12} type='text' label='Title' value={this.state.title} onChange={(e) => this.handleChange('title', e)} />
+              <Input s={12} type='text' label='Subtitle' value={this.state.subtitle} onChange={(e) => this.handleChange('subtitle', e)} />
+              <label><h6>Description</h6>
+                <textarea value={this.state.description} onChange={(e) => this.handleChange('description', e)} style={{height: '200px', color: 'black'}}/>
               </label>
-            </div>
+              <Input s={4} type='select' label='Category' onChange={(e) => this.handleChange('category', e)} >
+                <option value='' disabled selected>Select a category</option>
+                <option value='Art'>Art</option>
+                <option value='Design'>Design</option>
+                <option value='Fashion'>Fashion</option>
+                <option value='Film & Video'>Film & Video</option>
+                <option value='Food'>Food</option>
+                <option value='Game'>Games</option>
+                <option value='Music'>Music</option>
+                <option value='Photography'>Photography</option>
+                <option value='Publishing'>Publishing</option>
+                <option value='Technology'>Technology</option>
+              </Input>
+              <Input s={4} type='number' label='Funding Goal' value={this.state.fundingGoal} onChange={(e) => this.handleChange('fundingGoal', e)}/>
+              <Input s={4} type='number' label='Funding Duration' value={this.state.fundingDuration} onChange={(e) => this.handleChange('fundingDuration', e)}/>
+              <Input s={12} type='text' label='Image URLs' value={this.state.images} onChange={(e) => this.handleChange('images', e)}/>
+            </Row>
             <div>
-              <label>Subtitle
-              <input type='text' placeholder='Subtitle' value={this.state.subtitle} onChange={(e) => this.handleChange('subtitle', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Description
-              <textarea placeholder='Description' value={this.state.description} onChange={(e) => this.handleChange('description', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Category
-              <input type='text' placeholder='Category' value={this.state.category} onChange={(e) => this.handleChange('category', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Country
-              <input type='text' placeholder='Country' value={this.state.country} onChange={(e) => this.handleChange('country', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Funding Goal
-              <input type='number' placeholder='Funding Goal' value={this.state.fundingGoal} onChange={(e) => this.handleChange('fundingGoal', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Funding Duration
-              <input type='number' placeholder='Funding Duration' value={this.state.fundingDuration} onChange={(e) => this.handleChange('fundingDuration', e)} />
-              </label>
-            </div>
-            <div>
-              <label>Images
-              <input type='url' placeholder='Images' value={this.state.images} onChange={(e) => this.handleChange('images', e)} />
-              </label>
-            </div>
-            <div>
-              <button type="submit" className="">Create My Project</button>
+              <button type='submit' className='btn'>Create My Project</button>
             </div>
             <Link to='/'>Cancel</Link>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

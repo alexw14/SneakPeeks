@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Navbar, NavItem} from 'react-materialize';
+import {Navbar} from 'react-materialize';
 
 let navStyle = {
-  backgroundColor: '#009688'
+  backgroundColor: '#4a148c'
 }
 
 const Nav = (props) => {
@@ -20,7 +20,7 @@ const Nav = (props) => {
 
   return (
     <div>
-      <Navbar brand='Sneak Peeks' right>
+      <Navbar brand='Sneak Peeks' right style={navStyle}>
         {nav}
       </Navbar>
     </div>

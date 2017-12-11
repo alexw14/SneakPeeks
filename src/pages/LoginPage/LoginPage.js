@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
 
-class Login extends Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {message: ''}
@@ -25,4 +25,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default LoginPage;

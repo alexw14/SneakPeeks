@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import NewProjectForm from '../../components/NewProjectForm/NewProjectForm';
 
-const NewProject = (props) => {
+const NewProjectPage = (props) => {
   return (
     <div>
       <NewProjectForm 
@@ -11,4 +11,4 @@ const NewProject = (props) => {
   )
 }
 
-export default NewProject;
+export default NewProjectPage;

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
-import Home from '../Home/Home';
-import Projects from '../Projects/Projects';
-import NewProject from '../NewProject/NewProject';
-import SignUp from '../SignUp/SignUp';
-import Login from '../Login/Login';
+import HomePage from '../HomePage/HomePage';
+import ProjectsPage from '../ProjectsPage/ProjectsPage';
+import NewProjectPage from '../NewProjectPage/NewProjectPage';
+import SignUpPage from '../SignUpPage/SignUpPage';
+import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 
 class App extends Component {
@@ -14,7 +14,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: null,
+      user: null
     }
   }
 
@@ -36,8 +37,7 @@ class App extends Component {
     let user = userService.getUser();
     let findProjects = fetch('/api/projects').then(res => res.json());
     Promise.all([user, findProjects]).then(data => {
-      console.log(data);
-      this.setState({user: data[0], findProjects: data[1]});
+      this.setState({user: data[0], projects: data[1]});
     });
   }
 
@@ -50,27 +50,27 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={() =>
-            <Home />
+            <HomePage />
           }/>
           <Route exact path='/projects' render={(props) =>
-            <Projects 
+            <ProjectsPage 
               {...props}
               projects={this.state.projects}
             />
           }/>
           <Route exact path='/projects/new' render={(props) =>
-            <NewProject 
+            <NewProjectPage 
               {...props}
             />
           }/>
           <Route exact path='/signup' render={(props) =>
-            <SignUp 
+            <SignUpPage 
               {...props}
               handleSignUp={this.handleSignUp}
             /> 
           }/>
           <Route exact path='/login' render={(props) => 
-            <Login
+            <LoginPage
               {...props}
               handleLogin={this.handleLogin}
             />
