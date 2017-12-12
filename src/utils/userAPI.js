@@ -9,7 +9,7 @@ function signup(user) {
   .then(res => {
     if (res.ok) return res.json();
     // Likely duplicate email if !res.ok
-    throw new Error('Email already taken!');
+    throw new Error('Sorry, there are errors with the information you provided. Please try again.');
   })
   .then(({token}) => token); // Parameter destructuring
 }

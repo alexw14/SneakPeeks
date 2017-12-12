@@ -1,16 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+let listItemStyle = {
+  padding: '0 20px'
+};
+
 const Nav = (props) => {
   let nav = props.user ?
     <ul className='right'>
-      <li>Welcome {props.user.name}</li>
-      <li><Link to="" onClick={props.handleLogout}>Log Out</Link></li>
+      <li style={listItemStyle}>Welcome {props.user.name}</li>
+      <li style={listItemStyle}><Link to="" onClick={props.handleLogout}>Log Out</Link></li>
     </ul>
     :
     <ul className='right'>
-      <li><Link to="/login">Login</Link></li>
-      <li><Link to="/signup">Sign Up</Link></li>
+      <li style={listItemStyle}><Link to="/login">Login</Link></li>
+      <li style={listItemStyle}><Link to="/signup">Sign Up</Link></li>
     </ul>
 
   return (

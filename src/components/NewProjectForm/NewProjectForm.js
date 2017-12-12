@@ -55,8 +55,8 @@ class NewProjectForm extends Component {
             <option value='Publishing'>Publishing</option>
             <option value='Technology'>Technology</option>
           </Input>
-          <Input s={4} type='number' label='Funding Goal' onChange={(e) => this.handleChange('fundingGoal', e)} />
-          <Input s={4} type='number' label='Funding Duration' onChange={(e) => this.handleChange('fundingDuration', e)} />
+          <Input s={4} type='number' label='Funding Goal (USD)' onChange={(e) => this.handleChange('fundingGoal', e)} />
+          <Input s={4} type='number' label='Funding Duration (days)' onChange={(e) => this.handleChange('fundingDuration', e)} />
           <Input s={12} type='text' label='Image URLs' onChange={(e) => this.handleChange('images', e)} />
         </Row>
         <div>

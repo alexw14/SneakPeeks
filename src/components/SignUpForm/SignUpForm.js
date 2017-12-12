@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 
 class SignUpForm extends Component {
@@ -9,6 +9,7 @@ class SignUpForm extends Component {
       name: '',
       email: '',
       password: '',
+      passwordConf: '',
       biography: '',
       website: '',
       avatar: ''
@@ -34,59 +35,55 @@ class SignUpForm extends Component {
   }
 
   isFormValid() {
-    return !(this.state.name && this.state.email && this.state.password);
+    if (this.state.password === this.state.passwordConf && this.state.passwordConf !== '') return true;
   }
 
   render() {
+    let button = <button type="submit" className='btn' disabled>Create My Account</button>;
+    if (this.isFormValid()) button = <button type="submit" className='btn'>Create My Account</button>;
+
     return (
       <div>
-        <header>Sign Up</header>
+        <header><h1>Sign Up</h1></header>
         <form onSubmit={this.handleSubmit}>
           <div className='container'>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Name
-                    <input type="text" placeholder="Name" value={this.state.name} onChange={(e) => this.handleChange('name', e)} />
-                </label>
+            <div className="row">
+              <div className="input-field col s6">
+                <input type="text" onChange={(e) => this.handleChange('name', e)} />
+                <label>Name</label>
+              </div>
+              <div className="input-field col s6">
+                <input type="text" onChange={(e) => this.handleChange('email', e)} />
+                <label>Email</label>
               </div>
             </div>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Email
-                    <input type="email" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
-                </label>
+            <div className="row">
+              <div className="input-field col s6">
+                <input type="password" onChange={(e) => this.handleChange('password', e)} />
+                <label>Password</label>
+              </div>
+              <div className="input-field col s6">
+                <input type="password" onChange={(e) => this.handleChange('passwordConf', e)} />
+                <label>Password Confirmation</label>
               </div>
             </div>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Password
-                    <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
-                </label>
-              </div>
+            <div className="row">
+              <label><h6>Biography</h6>
+                <textarea onChange={(e) => this.handleChange('biography', e)} style={{ height: '100px', color: 'black' }} />
+              </label>
             </div>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Biography
-                    <textarea placeholder="Biography" value={this.state.biography} onChange={(e) => this.handleChange('biography', e)} />
-                </label>
+            <div className="row">
+              <div className="input-field col s6">
+                <input type="text" onChange={(e) => this.handleChange('website', e)} />
+                <label>Website URL</label>
               </div>
-            </div>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Website
-                    <input type="text" placeholder="Website" value={this.state.website} onChange={(e) => this.handleChange('website', e)} />
-                </label>
-              </div>
-            </div>
-            <div className="">
-              <div className="" style={{margin: '0 auto'}}>
-                <label>Profile Picture
-                    <input type="url" placeholder="Profile Picture" value={this.state.avatar} onChange={(e) => this.handleChange('avatar', e)} />
-                </label>
+              <div className="input-field col s6">
+                <input type="text" onChange={(e) => this.handleChange('avatar', e)} />
+                <label>Profile Picture URL</label>
               </div>
             </div>
             <div>
-              <button type="submit" className="" disabled={this.isFormValid()}>Create My Account</button>
+              {button}
             </div>
             <Link to='/'>Cancel</Link>
           </div>
