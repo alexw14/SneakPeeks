@@ -34,8 +34,8 @@ class App extends Component {
   }
 
   findOneProject = (name) => {
-    let project = this.state.projects.filter(project => project.title.replace(/\s/g, "").toLowerCase() === name);
-    console.log(project);
+    let project = null;
+    if (this.state.projects) project = this.state.projects.filter(project => project.title.replace(/\s/g, "").toLowerCase() === name);
     return project;
   }
 
