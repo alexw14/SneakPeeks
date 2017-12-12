@@ -65,16 +65,16 @@ class App extends Component {
               projects={this.state.projects}
             />
           }/>
+          <Route exact path='/projects/new' render={(props) =>
+            <NewProjectPage 
+            {...props}
+            user={this.state.user}
+            />
+          }/>
           <Route path='/projects/:project' render={(props) => 
             <ProjectShowPage  
               {...props} 
               project={this.findOneProject(props.match.params.project)} 
-            />
-          }/>
-          <Route exact path='/projects/new' render={(props) =>
-            <NewProjectPage 
-              {...props}
-              user={this.state.user}
             />
           }/>
           <Route exact path='/signup' render={(props) =>

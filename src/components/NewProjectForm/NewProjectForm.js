@@ -14,13 +14,14 @@ class NewProjectForm extends Component {
       fundingGoal: null,
       fundingDuration: null,
       images: [],
-      owner: this.props.user._id
+      owner: null
     }
   }
 
   handleChange = (field, e) => {
     this.setState({
-      [field]: e.target.value
+      [field]: e.target.value,
+      owner: this.props.user._id
     });
   }
 
