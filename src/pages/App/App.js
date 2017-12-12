@@ -39,6 +39,10 @@ class App extends Component {
     return project;
   }
 
+  handleSupport = () => {
+    
+  }
+
   // Lifecycle Methods
   componentDidMount() {
     let user = userService.getUser();
@@ -74,6 +78,7 @@ class App extends Component {
           <Route path='/projects/:project' render={(props) => 
             <ProjectShowPage  
               {...props} 
+              user={this.state.user}
               project={this.findOneProject(props.match.params.project)} 
             />
           }/>

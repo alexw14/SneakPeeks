@@ -11,6 +11,17 @@ function newProject(project) {
   })
 }
 
+function update(project) {
+  return fetch(BASE_URL + `${project._id}`, {
+    method: 'PUT',
+    body: JSON.stringify(project)
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+  })
+}
+
 export default {
-  newProject
+  newProject,
+  update
 }

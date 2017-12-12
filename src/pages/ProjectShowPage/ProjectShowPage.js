@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ProjectContent from '../../components/ProjectContent/ProjectContent';
 
 const ProjectShowPage = (props) => {
@@ -6,6 +6,8 @@ const ProjectShowPage = (props) => {
   return (
     <div>
       <ProjectContent
+        {...props}
+        user={props.user}
         project={props.project}
       />
     </div>

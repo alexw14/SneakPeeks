@@ -1,4 +1,6 @@
 import React from 'react';
+import {Modal, Button} from 'react-materialize';
+import SupportProjectForm from '../SupportProjectForm/SupportProjectForm';
 
 let contentStyle = {
   marginTop: '40px'
@@ -23,7 +25,7 @@ const ProjectContent = (props) => {
       </div>
       <div className='row'>
         <div className='col s8'>
-          <img src={props.project[0].images[0]} style={{ width: '100%' }} />
+          <img src={props.project[0].images[0]} style={{ width: '100%' }} alt=''/>
         </div>
         <div className='col s4'>
           <div className='progress'>
@@ -32,7 +34,13 @@ const ProjectContent = (props) => {
           <h6 className='left-align' style={contentStyle}>${numberWithCommas(props.project[0].currentFunding)}</h6>
           <h5 style={contentStyle}>${numberWithCommas(props.project[0].fundingGoal)}</h5>
           <h6 style={contentStyle}>{props.project[0].fundingDuration} Days to go</h6>
-          <button className='btn'>Back This Project</button>
+          <Modal header='Support This Project' trigger={<Button>Back this project</Button>}>
+            <SupportProjectForm
+              {...props} 
+              user={props.user}
+              project={props.project}
+            />
+          </Modal>
         </div>
       </div>
       <div className='row'>

@@ -14,6 +14,10 @@ function create(req, res) {
   .catch(err => res.json(400).json(err));
 }
 
+// function update(req, res) {
+//   Project.findByIdAndUpdate()
+// }
+
 
 module.exports = {
   index,
