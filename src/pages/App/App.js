@@ -3,7 +3,7 @@ import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import HomePage from '../HomePage/HomePage';
-import ProjectsPage from '../ProjectsPage/ProjectsPage';
+import ProjectsIndexPage from '../ProjectsIndexPage/ProjectsIndexPage';
 import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -53,7 +53,7 @@ class App extends Component {
             <HomePage />
           }/>
           <Route exact path='/projects' render={(props) =>
-            <ProjectsPage 
+            <ProjectsIndexPage 
               {...props}
               projects={this.state.projects}
             />

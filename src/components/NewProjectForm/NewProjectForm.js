@@ -14,7 +14,7 @@ class NewProjectForm extends Component {
       fundingGoal: null,
       fundingDuration: null,
       images: [],
-      owner: this.props.user
+      owner: this.props.user._id
     }
   }
 
