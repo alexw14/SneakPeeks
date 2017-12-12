@@ -61,6 +61,7 @@ class App extends Component {
           <Route exact path='/projects/new' render={(props) =>
             <NewProjectPage 
               {...props}
+              user={this.state.user}
             />
           }/>
           <Route exact path='/signup' render={(props) =>

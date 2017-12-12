@@ -6,6 +6,7 @@ const NewProjectPage = (props) => {
     <div>
       <NewProjectForm 
         {...props}
+        user={props.user}
       />
     </div>
   )
