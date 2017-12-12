@@ -2,17 +2,18 @@ const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {type: String, required: true, unique: true},
     subtitle: String,
-    description: String,
+    description: {type: String, required: true},
     category: {
       type: String,
-      enum: ['Art', 'Design', 'Fashion', 'Film & Video', 'Food', 'Game', 'Music', 'Photography', 'Publishing', 'Technology']
+      enum: ['Art', 'Design', 'Film & Video', 'Game', 'Music', 'Publishing', 'Technology'],
+      required: true
     },
     images: [String],
-    fundingGoal: Number,
+    fundingGoal: {type: Number, required: true},
     currentFunding: {type: Number, default: 0},
-    fundingDuration: Number,
+    fundingDuration: {type: Number, required: true},
     backers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   },

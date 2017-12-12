@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import HomePage from '../HomePage/HomePage';
 import ProjectsIndexPage from '../ProjectsIndexPage/ProjectsIndexPage';
+import ProjectShowPage from '../ProjectShowPage/ProjectShowPage';
 import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -32,6 +33,12 @@ class App extends Component {
     this.setState({user: null});
   }
 
+  findOneProject = (name) => {
+    let project = this.state.projects.filter(project => project.title.replace(/\s/g, "").toLowerCase() === name);
+    console.log(project);
+    return project;
+  }
+
   // Lifecycle Methods
   componentDidMount() {
     let user = userService.getUser();
@@ -56,6 +63,12 @@ class App extends Component {
             <ProjectsIndexPage 
               {...props}
               projects={this.state.projects}
+            />
+          }/>
+          <Route path='/projects/:project' render={(props) => 
+            <ProjectShowPage  
+              {...props} 
+              project={this.findOneProject(props.match.params.project)} 
             />
           }/>
           <Route exact path='/projects/new' render={(props) =>
