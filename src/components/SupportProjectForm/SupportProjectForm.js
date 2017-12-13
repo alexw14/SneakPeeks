@@ -23,14 +23,11 @@ class SupportProjectForm extends Component {
 
     let donation = this.state.donation ? this.state.donation : 0;
     let button = <h1>Loading</h1>
-    if (!this.props.user) {
-      button = <button type='submit' className='btn' disabled>Continue</button>
-    } else {
-      button = this.props.project.backers.includes(this.props.user._id) ?
-        <button type='submit' className='btn' disabled>Continue</button>
-        :
-        <button type='submit' className='btn'>Continue</button>
-    }
+    button = (this.props.user) ?
+    <button type='submit' className='btn'>Continue</button>
+    :
+    <button type='submit' className='btn' disabled>Continue</button>
+
 
     return (
       <div>

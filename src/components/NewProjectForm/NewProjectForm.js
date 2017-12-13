@@ -29,7 +29,7 @@ class NewProjectForm extends Component {
     e.preventDefault();
     projectAPI.newProject(this.state)
       .then(() => {
-        this.props.history.push(`/projects/${this.state.title.replace(/\s/g, "").toLowerCase()}`);
+        this.props.history.push(`/projects`);
       })
   }
 
@@ -41,9 +41,10 @@ class NewProjectForm extends Component {
             <Row>
               <Input s={12} type='text' label='Title' onChange={(e) => this.handleChange('title', e)} />
               <Input s={12} type='text' label='Subtitle' onChange={(e) => this.handleChange('subtitle', e)} />
-              <label><h6>Description</h6>
-                <textarea onChange={(e) => this.handleChange('description', e)} style={{ height: '200px', color: 'black' }} />
-              </label>
+              <div class="input-field col s12">
+                <textarea id="textarea" class="materialize-textarea" onChange={(e) => this.handleChange('description', e)}></textarea>
+                <label for="textarea">Description</label>
+              </div>
               <Input s={4} type='select' label='Category' onChange={(e) => this.handleChange('category', e)} >
                 <option value='' defaultValue>Select a category</option>
                 <option value='Art'>Art</option>

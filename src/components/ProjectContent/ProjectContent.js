@@ -42,7 +42,8 @@ const ProjectContent = (props) => {
     <div>
       <div className='row'>
         <div className='col s3'>
-          {/* <div>{props.project.owner}</div> */}
+          <div className='left-align'><img className='avatar' src={props.project.owner.avatar} width='50px' height='50px' alt=''/></div>
+          <div className='left-align'>By {props.project.owner.name}</div>
         </div>
         <div className='col s9 left-align'>
           <h2 style={{ fontWeight: 'bold' }}>{props.project.title}</h2>
@@ -52,6 +53,7 @@ const ProjectContent = (props) => {
       <div className='row'>
         <div className='col s8'>
           <img src={props.project.images} style={{ width: '100%' }} alt='' />
+          <h6 className='left-align'>Category: {props.project.category}</h6>
         </div>
         <div className='col s4'>
           <div className='progress'>

@@ -3,3 +3,7 @@
   color: white;
   border: none;
 }
+.avatar {
+  margin-top: 50px;
+  border-radius: 50%;
+}
