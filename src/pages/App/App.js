@@ -17,7 +17,8 @@ class App extends Component {
     super(props);
     this.state = {
       projects: null,
-      user: null
+      user: null,
+      search: 'All'
     }
   }
 
@@ -53,6 +54,10 @@ class App extends Component {
       })
   }
 
+  updateSearch = (e) => {
+    this.setState({search: e.target.value});
+  }
+
   // Lifecycle Methods
   componentDidMount() {
     let user = userService.getUser();
@@ -78,6 +83,8 @@ class App extends Component {
               {...props}
               user={this.state.user}
               projects={this.state.projects}
+              search={this.state.search}
+              updateSearch={this.updateSearch}
             />
           } />
           <Route exact path='/projects/new' render={(props) =>

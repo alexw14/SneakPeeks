@@ -10,7 +10,7 @@ class SupportProjectForm extends Component {
 
   handleChange = (field, e) => {
     this.setState({
-      [field]: e.target.value,
+      [field]: e.target.value
     })
   }
 
