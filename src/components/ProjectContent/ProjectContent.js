@@ -25,8 +25,8 @@ const ProjectContent = (props) => {
           <div>{props.project.owner}</div>
         </div>
         <div className='col s9 left-align'>
-          <h2>{props.project.title}</h2>
-          <h5>{props.project.subtitle}</h5>
+          <h1>{props.project.title}</h1>
+          <h4>{props.project.subtitle}</h4>
         </div>
       </div>
       <div className='row'>
@@ -46,17 +46,10 @@ const ProjectContent = (props) => {
                 {...props}
                 user={props.user}
                 project={props.project}
-                handleSupportProjectForm={props.handleSupportProjectForm}                
+                handleSupportProjectForm={props.handleSupportProjectForm}
               />
             </CollapsibleItem>
           </Collapsible>
-          {/* <Modal header='Support This Project' trigger={<Button>Back this project</Button>}>
-            <SupportProjectForm
-              {...props}
-              user={props.user}
-              project={props.project}
-            />
-          </Modal> */}
         </div>
       </div>
       <div className='row'>

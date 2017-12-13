@@ -30,7 +30,7 @@ class SupportProjectForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <div className='container'>
+          <div>
             <div className='row'>
               <div className='range-field'>
                 <input type='range' min='0' max='1000' defaultValue='0' onChange={(e) => this.handleChange('donation', e)} />
