@@ -11,9 +11,10 @@ function newProject(project) {
   })
 }
 
-function update(project) {
-  return fetch(BASE_URL + `${project._id}`, {
+function update(project, id) {
+  return fetch(BASE_URL + `${id}`, {
     method: 'PUT',
+    headers: new Headers({'Content-Type': 'application/json'}),
     body: JSON.stringify(project)
   })
   .then(res => {

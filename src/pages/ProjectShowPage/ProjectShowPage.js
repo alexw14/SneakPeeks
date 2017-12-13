@@ -9,6 +9,7 @@ const ProjectShowPage = (props) => {
         {...props}
         user={props.user}
         project={props.project}
+        handleSupportProjectForm={props.handleSupportProjectForm}         
       />
     </div>
   )

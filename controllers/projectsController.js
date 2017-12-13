@@ -14,12 +14,17 @@ function create(req, res) {
   .catch(err => res.json(400).json(err));
 }
 
-// function update(req, res) {
-//   Project.findByIdAndUpdate()
-// }
+function update(req, res) {
+  Project.findByIdAndUpdate(req.params.id, {currentFunding: req.body.currentFunding, backers: req.body.backers})
+  .then(project => {
+    res.json({project});
+  })
+  .catch(err => res.json(400).json(err));
+}
 
 
 module.exports = {
   index,
-  create
+  create,
+  update
 }

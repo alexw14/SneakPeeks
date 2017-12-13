@@ -9,6 +9,7 @@ import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import projectAPI from '../../utils/projectAPI';
 
 class App extends Component {
 
@@ -35,12 +36,18 @@ class App extends Component {
 
   findOneProject = (name) => {
     let project = null;
-    if (this.state.projects) project = this.state.projects.filter(project => project.title.replace(/\s/g, "").toLowerCase() === name);
+    if (this.state.projects) project = this.state.projects.find(project => project.title.replace(/\s/g, "").toLowerCase() === name);
     return project;
   }
 
-  handleSupport = () => {
-    
+  handleSupportProjectForm = (project, amount) => {
+    let projectCopy = Object.assign({}, project);
+    projectCopy.currentFunding += parseInt(amount, 10);
+    projectCopy.backers.push(this.state.user._id);
+    projectAPI.update(projectCopy, projectCopy._id)
+      .then(() => {fetch('/api/projects').then(res => res.json())
+      .then((projects) => {this.setState({projects})})
+    })  
   }
 
   // Lifecycle Methods
@@ -79,7 +86,8 @@ class App extends Component {
             <ProjectShowPage  
               {...props} 
               user={this.state.user}
-              project={this.findOneProject(props.match.params.project)} 
+              project={this.findOneProject(props.match.params.project)}
+              handleSupportProjectForm={this.handleSupportProjectForm} 
             />
           }/>
           <Route exact path='/signup' render={(props) =>

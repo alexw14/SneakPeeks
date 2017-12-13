@@ -29,7 +29,7 @@ class NewProjectForm extends Component {
     e.preventDefault();
     projectAPI.newProject(this.state)
       .then(() => {
-        this.props.history.push('/');
+        this.props.history.push(`/projects/${this.state.title.replace(/\s/g, "").toLowerCase()}`);
       })
   }
 
