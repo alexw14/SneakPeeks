@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import HomePage from '../HomePage/HomePage';
 import ProjectsIndexPage from '../ProjectsIndexPage/ProjectsIndexPage';
@@ -22,16 +22,16 @@ class App extends Component {
   }
 
   handleSignUp = () => {
-    this.setState({user: userService.getUser()});
+    this.setState({ user: userService.getUser() });
   }
-  
+
   handleLogin = () => {
-    this.setState({user: userService.getUser()});
+    this.setState({ user: userService.getUser() });
   }
 
   handleLogout = () => {
     userService.logout();
-    this.setState({user: null});
+    this.setState({ user: null });
   }
 
   findOneProject = (name) => {
@@ -40,14 +40,17 @@ class App extends Component {
     return project;
   }
 
+  // Update Project's currentFunding in SupportProjectForm component
   handleSupportProjectForm = (project, amount) => {
     let projectCopy = Object.assign({}, project);
     projectCopy.currentFunding += parseInt(amount, 10);
     projectCopy.backers.push(this.state.user._id);
     projectAPI.update(projectCopy, projectCopy._id)
-      .then(() => {fetch('/api/projects').then(res => res.json())
-      .then((projects) => {this.setState({projects})})
-    })  
+      .then(() => {
+        fetch('/api/projects')
+        .then(res => res.json())
+        .then((projects) => { this.setState({ projects }) })
+      })
   }
 
   // Lifecycle Methods
@@ -55,53 +58,53 @@ class App extends Component {
     let user = userService.getUser();
     let findProjects = fetch('/api/projects').then(res => res.json());
     Promise.all([user, findProjects]).then(data => {
-      this.setState({user: data[0], projects: data[1]});
+      this.setState({ user: data[0], projects: data[1] });
     });
   }
 
   render() {
     return (
       <div className='App'>
-        <Nav 
+        <Nav
           user={this.state.user}
-          handleLogout={this.handleLogout} 
+          handleLogout={this.handleLogout}
         />
         <Switch>
           <Route exact path='/' render={() =>
             <HomePage />
-          }/>
+          } />
           <Route exact path='/projects' render={(props) =>
-            <ProjectsIndexPage 
+            <ProjectsIndexPage
               {...props}
               projects={this.state.projects}
             />
-          }/>
+          } />
           <Route exact path='/projects/new' render={(props) =>
-            <NewProjectPage 
-            {...props}
-            user={this.state.user}
+            <NewProjectPage
+              {...props}
+              user={this.state.user}
             />
-          }/>
-          <Route path='/projects/:project' render={(props) => 
-            <ProjectShowPage  
-              {...props} 
+          } />
+          <Route path='/projects/:project' render={(props) =>
+            <ProjectShowPage
+              {...props}
               user={this.state.user}
               project={this.findOneProject(props.match.params.project)}
-              handleSupportProjectForm={this.handleSupportProjectForm} 
+              handleSupportProjectForm={this.handleSupportProjectForm}
             />
-          }/>
+          } />
           <Route exact path='/signup' render={(props) =>
-            <SignUpPage 
+            <SignUpPage
               {...props}
               handleSignUp={this.handleSignUp}
-            /> 
-          }/>
-          <Route exact path='/login' render={(props) => 
+            />
+          } />
+          <Route exact path='/login' render={(props) =>
             <LoginPage
               {...props}
               handleLogin={this.handleLogin}
             />
-          }/>
+          } />
         </Switch>
       </div>
     );

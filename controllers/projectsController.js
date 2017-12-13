@@ -4,6 +4,9 @@ function index(req, res) {
   Project.find({}).then(projects => {
     res.json(projects);
   });
+  // Project.find({}).populate('owner').exec((err, projects) => {
+  //   res.json(projects);
+  // });
 }
 
 function create(req, res) {

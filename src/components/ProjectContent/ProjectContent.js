@@ -3,12 +3,14 @@ import { Collapsible, CollapsibleItem } from 'react-materialize';
 import SupportProjectForm from '../SupportProjectForm/SupportProjectForm';
 import './ProjectContent.css';
 
-let contentStyle = {
-  marginTop: '40px'
-}
-
 const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const calcDateDiff = (date) => {
+  let now = Date.now(); // get time now in ms
+  let dateCreated = Date.parse(date); // convert date to ms
+  return Math.floor((now - dateCreated) / 86400000); // convert difference from ms to days
 }
 
 const ProjectContent = (props) => {
@@ -25,8 +27,8 @@ const ProjectContent = (props) => {
           <div>{props.project.owner}</div>
         </div>
         <div className='col s9 left-align'>
-          <h1>{props.project.title}</h1>
-          <h4>{props.project.subtitle}</h4>
+          <h2 style={{ fontWeight: 'bold' }}>{props.project.title}</h2>
+          <h5>{props.project.subtitle}</h5>
         </div>
       </div>
       <div className='row'>
@@ -37,9 +39,12 @@ const ProjectContent = (props) => {
           <div className='progress'>
             <div className='determinate' style={progressBarStyle}></div>
           </div>
-          <h6 className='left-align' style={contentStyle}>${numberWithCommas(props.project.currentFunding)}</h6>
-          <h5 style={contentStyle}>${numberWithCommas(props.project.fundingGoal)}</h5>
-          <h6 style={contentStyle}>{props.project.fundingDuration} Days to go</h6>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>${numberWithCommas(props.project.currentFunding)}</h4>
+          <h6 className='left-align'>pledged of ${numberWithCommas(props.project.fundingGoal)} goal</h6>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.project.backers.length}</h4>
+          <h6 className='left-align' style={{ marginTop: '-10px' }}>Backers</h6>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.project.fundingDuration - calcDateDiff(props.project.createdAt)}</h4>
+          <h6 className='left-align' style={{ margin: '-10px 0px 20px' }}>Days to go</h6>
           <Collapsible>
             <CollapsibleItem header='Support This Project' >
               <SupportProjectForm
