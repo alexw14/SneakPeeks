@@ -76,6 +76,7 @@ class App extends Component {
           <Route exact path='/projects' render={(props) =>
             <ProjectsIndexPage
               {...props}
+              user={this.state.user}
               projects={this.state.projects}
             />
           } />

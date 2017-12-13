@@ -19,12 +19,30 @@ const ProjectContent = (props) => {
     { width: `${props.project.currentFunding / props.project.fundingGoal * 100}%` }
     :
     null;
+  let daysRemaining = props.project ? props.project.fundingDuration - calcDateDiff(props.project.createdAt) : 0
+  daysRemaining = daysRemaining > 0 ?
+    <div>
+      <h4 className='left-align' style={{ fontWeight: 'bold' }}>{numberWithCommas(daysRemaining)}</h4>
+      <h6 className='left-align' style={{ margin: '-10px 0px 20px' }}>Days to go</h6>
+      <Collapsible>
+        <CollapsibleItem header='Support This Project' >
+          <SupportProjectForm
+            {...props}
+            user={props.user}
+            project={props.project}
+            handleSupportProjectForm={props.handleSupportProjectForm}
+          />
+        </CollapsibleItem>
+      </Collapsible>
+    </div>
+    :
+    <h4>Funding for this project has ended.</h4>
 
   let project = props.project ?
     <div>
       <div className='row'>
         <div className='col s3'>
-          <div>{props.project.owner}</div>
+          {/* <div>{props.project.owner}</div> */}
         </div>
         <div className='col s9 left-align'>
           <h2 style={{ fontWeight: 'bold' }}>{props.project.title}</h2>
@@ -41,20 +59,9 @@ const ProjectContent = (props) => {
           </div>
           <h4 className='left-align' style={{ fontWeight: 'bold' }}>${numberWithCommas(props.project.currentFunding)}</h4>
           <h6 className='left-align'>pledged of ${numberWithCommas(props.project.fundingGoal)} goal</h6>
-          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.project.backers.length}</h4>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{numberWithCommas(props.project.backers.length)}</h4>
           <h6 className='left-align' style={{ marginTop: '-10px' }}>Backers</h6>
-          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.project.fundingDuration - calcDateDiff(props.project.createdAt)}</h4>
-          <h6 className='left-align' style={{ margin: '-10px 0px 20px' }}>Days to go</h6>
-          <Collapsible>
-            <CollapsibleItem header='Support This Project' >
-              <SupportProjectForm
-                {...props}
-                user={props.user}
-                project={props.project}
-                handleSupportProjectForm={props.handleSupportProjectForm}
-              />
-            </CollapsibleItem>
-          </Collapsible>
+          {daysRemaining}
         </div>
       </div>
       <div className='row'>
