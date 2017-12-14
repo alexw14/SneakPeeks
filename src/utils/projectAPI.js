@@ -19,8 +19,10 @@ function update(project, id) {
 function authorize(method, body) {
   return {
     method: method,
-    // headers: new Headers({'Authorization': 'Bearer ' + tokenService.getToken()}),
-    headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken() }),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
     body: JSON.stringify(body)
   }
 }

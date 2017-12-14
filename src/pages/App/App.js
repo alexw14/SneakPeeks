@@ -43,7 +43,8 @@ class App extends Component {
 
   // Create new project in NewProjectForm component
   handleNewProjectForm = (project) => {
-    projectAPI.newProject(project)
+    let projectCopy = Object.assign({}, project);
+    projectAPI.newProject(projectCopy)
       .then(() => {
         fetch('/api/projects')
           .then(res => res.json())

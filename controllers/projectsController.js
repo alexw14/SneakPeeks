@@ -9,9 +9,9 @@ function index(req, res) {
 function create(req, res) {
   let project = new Project(req.body);
   project.save().then(project => {
-    res.json({project});
+    res.json(project);
   })
-  .catch(err => res.json(400).json(err));
+  .catch(err => res.status(400).json(err));
 }
 
 function update(req, res) {
@@ -19,9 +19,8 @@ function update(req, res) {
   .then(project => {
     res.json({project});
   })
-  .catch(err => res.json(400).json(err));
+  .catch(err => res.status(400).json(err));
 }
-
 
 module.exports = {
   index,
