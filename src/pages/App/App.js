@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
 import HomePage from '../HomePage/HomePage';
 import ProjectsIndexPage from '../ProjectsIndexPage/ProjectsIndexPage';
@@ -18,7 +18,6 @@ class App extends Component {
     this.state = {
       projects: null,
       user: null,
-      // search: 'All'
     }
   }
 
@@ -49,14 +48,10 @@ class App extends Component {
     projectAPI.update(projectCopy, projectCopy._id)
       .then(() => {
         fetch('/api/projects')
-        .then(res => res.json())
-        .then((projects) => { this.setState({ projects }) })
+          .then(res => res.json())
+          .then((projects) => { this.setState({ projects }) })
       })
   }
-
-  // updateSearch = (e) => {
-  //   this.setState({search: e.target.value});
-  // }
 
   // Lifecycle Methods
   componentDidMount() {
@@ -83,15 +78,16 @@ class App extends Component {
               {...props}
               user={this.state.user}
               projects={this.state.projects}
-              // search={this.state.search}
-              // updateSearch={this.updateSearch}
             />
           } />
           <Route exact path='/projects/new' render={(props) =>
-            <NewProjectPage
-              {...props}
-              user={this.state.user}
-            />
+            userService.getUser() ?
+              <NewProjectPage
+                {...props}
+                user={this.state.user}
+              />
+              :
+              <Redirect to='/' />
           } />
           <Route path='/projects/:project' render={(props) =>
             <ProjectShowPage

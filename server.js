@@ -16,6 +16,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json());
 
+app.use(require('./config/auth'));
+
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/projects', require('./routes/api/projects'));
 
