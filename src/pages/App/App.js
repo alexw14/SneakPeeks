@@ -41,6 +41,16 @@ class App extends Component {
     return project;
   }
 
+  // Create new project in NewProjectForm component
+  handleNewProjectForm = (project) => {
+    projectAPI.newProject(project)
+      .then(() => {
+        fetch('/api/projects')
+          .then(res => res.json())
+          .then((projects) => { this.setState({ projects }) })
+      });
+  }
+
   // Update Project's currentFunding in SupportProjectForm component
   handleSupportProjectForm = (project, amount) => {
     let projectCopy = Object.assign({}, project);
@@ -51,7 +61,7 @@ class App extends Component {
         fetch('/api/projects')
           .then(res => res.json())
           .then((projects) => { this.setState({ projects }) })
-      })
+      });
   }
 
   // Lifecycle Methods
@@ -86,6 +96,7 @@ class App extends Component {
               <NewProjectPage
                 {...props}
                 user={this.state.user}
+                handleNewProjectForm={this.handleNewProjectForm}
               />
               :
               <Redirect to='/' />
@@ -98,7 +109,7 @@ class App extends Component {
               handleSupportProjectForm={this.handleSupportProjectForm}
             />
           } />
-          <Route path='/profile' render={(props) =>
+          <Route exact path='/profile' render={(props) =>
             <ProfilePage
               {...props}
               user={this.state.user}

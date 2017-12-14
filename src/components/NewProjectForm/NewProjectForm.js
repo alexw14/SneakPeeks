@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import projectAPI from '../../utils/projectAPI';
 import { Row, Input } from 'react-materialize';
 
 class NewProjectForm extends Component {
@@ -27,10 +26,7 @@ class NewProjectForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    projectAPI.newProject(this.state)
-      .then(() => {
-        this.props.history.push(`/projects`);
-      })
+    this.props.handleNewProjectForm(this.state);
   }
 
   render() {
