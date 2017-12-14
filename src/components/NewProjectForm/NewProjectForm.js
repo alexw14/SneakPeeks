@@ -36,14 +36,15 @@ class NewProjectForm extends Component {
   render() {
     return (
       <div>
+        <header><h2>Bring your creative project to life.</h2></header>
         <div className='container'>
           <form onSubmit={this.handleSubmit}>
             <Row>
               <Input s={12} type='text' label='Title' onChange={(e) => this.handleChange('title', e)} />
               <Input s={12} type='text' label='Subtitle' onChange={(e) => this.handleChange('subtitle', e)} />
-              <div class="input-field col s12">
-                <textarea id="textarea" class="materialize-textarea" onChange={(e) => this.handleChange('description', e)}></textarea>
-                <label for="textarea">Description</label>
+              <div className='input-field col s12'>
+                <textarea id='textarea' className='materialize-textarea' onChange={(e) => this.handleChange('description', e)}></textarea>
+                <label for='textarea'>Description</label>
               </div>
               <Input s={4} type='select' label='Category' onChange={(e) => this.handleChange('category', e)} >
                 <option value='' defaultValue>Select a category</option>

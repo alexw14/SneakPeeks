@@ -1,35 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-const ProjectsIndexPage = (props) => {
-
-  let projectList = props.projects ?
-    props.projects.map((project, idx) => <ProjectCard key={project._id} project={project} />)
-    :
-    <h1>Loading</h1>
-
-  if (props.search !== 'All') {
-    projectList = props.projects.filter(project => project.category === props.search)
-      .map(project => <ProjectCard key={project._id} project={project} />)
+class ProjectsIndexPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: 'All'
+    }
   }
 
+  updateSearch = (e) => {
+    this.setState({ search: e.target.value });
+  }
 
-  return (
-    <div>
-      <div className='container'>
-        <h1>View all projects</h1>
-        <SearchBar
-          search={props.search}
-          updateSearch={props.updateSearch}
-        />
-        <div className="row">
-          {projectList}
+  render() {
+    let projectList = this.props.projects ?
+      this.props.projects.map((project, idx) => <ProjectCard key={project._id} project={project} />)
+      :
+      <h1>Loading</h1>
+
+    if (this.state.search !== 'All') {
+      projectList = this.props.projects.filter(project => project.category === this.state.search)
+        .map(project => <ProjectCard key={project._id} project={project} />)
+    }
+
+    return (
+      <div>
+        <div className='container'>
+          <h2>Show me {this.state.search} projects</h2>
+          <SearchBar
+            updateSearch={this.updateSearch}
+          />
+          <div className="row">
+            {projectList}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
-};
+}
 
 export default ProjectsIndexPage;

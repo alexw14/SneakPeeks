@@ -35,19 +35,19 @@ class LoginForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className='container'>
             <div className='row'>
-              <div className="input-field col s6 offset-s3">
-                <input type="text" onChange={(e) => this.handleChange('email', e)} />
+              <div className='input-field col s6 offset-s3'>
+                <input type='text' onChange={(e) => this.handleChange('email', e)} />
                 <label>Email</label>
               </div>
             </div>
             <div className='row'>
-              <div className="input-field col s6 offset-s3">
-                <input type="password" onChange={(e) => this.handleChange('password', e)} />
+              <div className='input-field col s6 offset-s3'>
+                <input type='password' onChange={(e) => this.handleChange('password', e)} />
                 <label>Password</label>
               </div>
             </div>
             <div>
-              <button type="submit" className="btn">Log In</button>
+              <button type='submit' className='btn'>Log In</button>
             </div>
             <Link to='/'>Cancel</Link>
           </div>
