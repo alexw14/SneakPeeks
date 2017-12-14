@@ -43,8 +43,8 @@ class NewProjectForm extends Component {
               <Input s={12} type='text' label='Title' onChange={(e) => this.handleChange('title', e)} />
               <Input s={12} type='text' label='Subtitle' onChange={(e) => this.handleChange('subtitle', e)} />
               <div className='input-field col s12'>
-                <textarea id='textarea' className='materialize-textarea' onChange={(e) => this.handleChange('description', e)}></textarea>
-                <label for='textarea'>Description</label>
+                <textarea className='materialize-textarea' onChange={(e) => this.handleChange('description', e)}></textarea>
+                <label>Description</label>
               </div>
               <Input s={4} type='select' label='Category' onChange={(e) => this.handleChange('category', e)} >
                 <option value='' defaultValue>Select a category</option>

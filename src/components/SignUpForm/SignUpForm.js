@@ -69,8 +69,8 @@ class SignUpForm extends Component {
             </div>
             <div className='row'>
               <div className='input-field col s12'>
-                <textarea id='textarea' className='materialize-textarea' onChange={(e) => this.handleChange('biography', e)}></textarea>
-                <label for='textarea'>Biography</label>
+                <textarea className='materialize-textarea' onChange={(e) => this.handleChange('biography', e)}></textarea>
+                <label>Biography</label>
               </div>
             </div>
             <div className='row'>
