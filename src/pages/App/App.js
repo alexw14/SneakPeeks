@@ -8,6 +8,7 @@ import ProjectShowPage from '../ProjectShowPage/ProjectShowPage';
 import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LoginPage from '../LoginPage/LoginPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import userService from '../../utils/userService';
 import projectAPI from '../../utils/projectAPI';
 
@@ -95,6 +96,13 @@ class App extends Component {
               user={this.state.user}
               project={this.findOneProject(props.match.params.project)}
               handleSupportProjectForm={this.handleSupportProjectForm}
+            />
+          } />
+          <Route path='/profile' render={(props) =>
+            <ProfilePage
+              {...props}
+              user={this.state.user}
+              projects={this.state.projects}
             />
           } />
           <Route exact path='/signup' render={(props) =>

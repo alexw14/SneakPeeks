@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 
 class LoginForm extends Component {
@@ -12,7 +12,7 @@ class LoginForm extends Component {
   }
 
   handleChange = (field, e) => {
-    this.props.updateMessage('');    
+    this.props.updateMessage('');
     this.setState({
       [field]: e.target.value
     });
@@ -49,7 +49,7 @@ class LoginForm extends Component {
             <div>
               <button type='submit' className='btn'>Log In</button>
             </div>
-            <Link to='/'>Cancel</Link>
+            <div style={{ marginTop: '25px' }}> <Link to='/'>Cancel</Link> </div>
           </div>
         </form>
       </div>

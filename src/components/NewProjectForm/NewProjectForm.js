@@ -63,7 +63,7 @@ class NewProjectForm extends Component {
             <div>
               <button type='submit' className='btn'>Create My Project</button>
             </div>
-            <Link to='/'>Cancel</Link>
+            <div style={{ marginTop: '25px' }}> <Link to='/'>Cancel</Link> </div>
           </form>
         </div>
       </div>
