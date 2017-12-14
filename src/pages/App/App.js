@@ -62,6 +62,7 @@ class App extends Component {
         fetch('/api/projects')
           .then(res => res.json())
           .then((projects) => { this.setState({ projects }) })
+          .then(this.props.history.push('/'))
       });
   }
 

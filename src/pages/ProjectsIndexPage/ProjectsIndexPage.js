@@ -16,7 +16,7 @@ class ProjectsIndexPage extends Component {
 
   render() {
     let projectList = this.props.projects ?
-      this.props.projects.map((project, idx) => <ProjectCard key={project._id} project={project} />)
+      this.props.projects.map(project => <ProjectCard key={project._id} project={project} />)
       :
       <h1>Loading</h1>
 

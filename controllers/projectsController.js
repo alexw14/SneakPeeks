@@ -1,8 +1,10 @@
 const Project = require('../models/project');
 
 function index(req, res) {
-   Project.find({}).populate('backers owner').exec((err, projects) => {
+   Project.find({}).then((projects) => {
     res.json(projects);
+  //  Project.find({}).populate('backers owner').exec((err, projects) => {
+  //   res.json(projects);
   });
 }
 

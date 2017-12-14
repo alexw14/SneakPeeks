@@ -28,14 +28,14 @@ const ProjectCard = (props) => {
         <div style={backgroundImg}></div>
       </div>
       <div className='card-content left-align'>
-        <h4 className='flow-text' style={{ fontWeight: 'bold', marginTop:'0' }}>{project.title}</h4>
-        <p style={{marginBottom: '20px'}}>{project.subtitle}</p>
+        <h4 className='flow-text' style={{ fontWeight: 'bold', marginTop: '0' }}>{project.title}</h4>
+        <p style={{ marginBottom: '20px' }}>{project.subtitle}</p>
         <div className='progress'>
           <div className='determinate' style={progressBarStyle}></div>
         </div>
         <p>${numberWithCommas(project.currentFunding)} pledged</p>
         <p>{percentage}% funded</p>
-        <p style={{margin: '10px 0 -10px'}}>Category: {project.category}</p>
+        <p style={{ margin: '10px 0 -10px' }}>Category: {project.category}</p>
       </div>
       <Link to={`/projects/${uri}`}>Explore</Link>
     </div>
