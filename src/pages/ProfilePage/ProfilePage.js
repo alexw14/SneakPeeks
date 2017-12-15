@@ -1,10 +1,13 @@
 import React from 'react';
+import ProfileDisplay from '../../components/ProfileDisplay/ProfileDisplay';
 
 const ProfilePage = (props) => {
   return (
     <div>
-      Hello
-      </div>
+      <ProfileDisplay 
+        user={props.user}
+      />
+    </div>
   )
 }
 

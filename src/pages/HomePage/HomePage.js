@@ -8,7 +8,7 @@ const HomePage = (props) => {
       <div className='container'>
         <h1 style={{ paddingTop: '125px', marginTop: '-30px' }}>Our mission is to help bring creative projects to life.</h1>
         <div>
-          <h5 style={{ marginTop: '360px' }}>Find, fund, and shop the next big thing</h5>
+          <h5 style={{ marginTop: '365px' }}>Find, fund, and shop the next big thing</h5>
         </div>
         <div className='row'>
           <button className='btn white' style={{margin: '0 50px'}}><Link to='/projects/new'>Start a project</Link></button>

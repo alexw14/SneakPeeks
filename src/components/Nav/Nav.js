@@ -8,7 +8,7 @@ let listItemStyle = {
 const Nav = (props) => {
   let navItems = props.user ?
     <ul className='right'>
-      <li style={listItemStyle}>Welcome {props.user.name}</li>
+      <li style={listItemStyle}><Link to='/profile'>Welcome {props.user.name}</Link></li>
       <li style={listItemStyle}><Link to="" onClick={props.handleLogout}>Log Out</Link></li>
     </ul>
     :
