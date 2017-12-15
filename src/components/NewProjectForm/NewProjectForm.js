@@ -26,6 +26,7 @@ class NewProjectForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.history.push('/projects');
     this.props.handleNewProjectForm(this.state);
   }
 

@@ -1,10 +1,8 @@
 const Project = require('../models/project');
 
 function index(req, res) {
-   Project.find({}).then((projects) => {
+   Project.find({}).populate('backers owner').exec((err, projects) => {
     res.json(projects);
-  //  Project.find({}).populate('backers owner').exec((err, projects) => {
-  //   res.json(projects);
   });
 }
 
@@ -19,7 +17,7 @@ function create(req, res) {
 function update(req, res) {
   Project.findByIdAndUpdate(req.params.id, {currentFunding: req.body.currentFunding, backers: req.body.backers})
   .then(project => {
-    res.json({project});
+    res.json(project);
   })
   .catch(err => res.status(400).json(err));
 }

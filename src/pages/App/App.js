@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer'
 import HomePage from '../HomePage/HomePage';
 import ProjectsIndexPage from '../ProjectsIndexPage/ProjectsIndexPage';
 import ProjectShowPage from '../ProjectShowPage/ProjectShowPage';
@@ -62,7 +63,6 @@ class App extends Component {
         fetch('/api/projects')
           .then(res => res.json())
           .then((projects) => { this.setState({ projects }) })
-          .then(this.props.history.push('/'))
       });
   }
 
@@ -131,6 +131,8 @@ class App extends Component {
             />
           } />
         </Switch>
+        <Footer 
+        />
       </div>
     );
   }
