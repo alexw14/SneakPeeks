@@ -42,6 +42,12 @@ class App extends Component {
     return project;
   }
 
+  findProjectsOfOneUser = () => {
+    let projects = null;
+    if (this.state.projects) projects = this.state.projects.filter(project => project.owner._id === this.state.user._id);
+    return projects;
+  }
+
   // Create new project in NewProjectForm component
   handleNewProjectForm = (project) => {
     let projectCopy = Object.assign({}, project);
@@ -115,7 +121,7 @@ class App extends Component {
             <ProfilePage
               {...props}
               user={this.state.user}
-              projects={this.state.projects}
+              projects={this.findProjectsOfOneUser()}
             />
           } />
           <Route exact path='/signup' render={(props) =>
