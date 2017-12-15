@@ -107,7 +107,7 @@ class App extends Component {
                 handleNewProjectForm={this.handleNewProjectForm}
               />
               :
-              <Redirect to='/' />
+              <Redirect to='/login' />
           } />
           <Route path='/projects/:project' render={(props) =>
             <ProjectShowPage
