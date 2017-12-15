@@ -49,7 +49,7 @@ class LoginForm extends Component {
             <div>
               <button type='submit' className='btn'>Log In</button>
             </div>
-            <div style={{ marginTop: '25px' }}> <Link to='/'>Cancel</Link> </div>
+            <div style={{ margin: '25px 0' }}> <Link to='/'>Cancel</Link> </div>
           </div>
         </form>
       </div>

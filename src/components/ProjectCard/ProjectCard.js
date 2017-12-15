@@ -23,22 +23,23 @@ const ProjectCard = (props) => {
     null;
 
   let projectCard = props.project ?
-    <div className='card' style={{ overflow: 'scroll', height: '400px' }} >
-      <div className='card-image'>
-        <div style={backgroundImg}></div>
-      </div>
-      <div className='card-content left-align'>
-        <h4 className='flow-text' style={{ fontWeight: 'bold', marginTop: '0' }}>{project.title}</h4>
-        <p style={{ marginBottom: '20px' }}>{project.subtitle}</p>
-        <div className='progress'>
-          <div className='determinate' style={progressBarStyle}></div>
+    <Link to={`/projects/${uri}`}>
+      <div className='card' style={{ overflow: 'scroll', height: '450px' }} >
+        <div className='card-image'>
+          <div style={backgroundImg}></div>
         </div>
-        <p>${numberWithCommas(project.currentFunding)} pledged</p>
-        <p>{percentage}% funded</p>
-        <p style={{ margin: '10px 0 -10px' }}>Category: {project.category}</p>
+        <div className='card-content left-align'>
+          <h4 className='flow-text' style={{ fontWeight: 'bold', marginTop: '0' }}>{project.title}</h4>
+          <p style={{ marginBottom: '20px' }}>{project.subtitle}</p>
+          <div className='progress'>
+            <div className='determinate' style={progressBarStyle}></div>
+          </div>
+          <p>${numberWithCommas(project.currentFunding)} pledged</p>
+          <p>{percentage}% funded</p>
+          <p style={{ margin: '10px 0 -10px' }}>Category: {project.category}</p>
+        </div>
       </div>
-      <Link to={`/projects/${uri}`}>Explore</Link>
-    </div>
+    </Link>
     :
     <h1>Loading</h1>
 

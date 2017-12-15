@@ -86,7 +86,7 @@ class SignUpForm extends Component {
             <div>
               {button}
             </div>
-            <div style={{ marginTop: '25px' }}> <Link to='/'>Cancel</Link> </div>
+            <div style={{ margin: '25px 0' }}> <Link to='/'>Cancel</Link> </div>
           </div>
         </form>
       </div>
