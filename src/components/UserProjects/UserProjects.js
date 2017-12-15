@@ -10,6 +10,7 @@ const UserProjects = (props) => {
 
   return (
     <div className='row'>
+      <h3>My Projects</h3>
       {projectList}
     </div>
   )
