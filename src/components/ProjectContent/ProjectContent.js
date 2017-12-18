@@ -3,26 +3,17 @@ import { Collapsible, CollapsibleItem } from 'react-materialize';
 import SupportProjectForm from '../SupportProjectForm/SupportProjectForm';
 import './ProjectContent.css';
 
-const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-const calcDateDiff = (date) => {
-  let now = Date.now(); // get time now in ms
-  let dateCreated = Date.parse(date); // convert date to ms
-  return Math.floor((now - dateCreated) / 86400000); // convert difference from ms to days
-}
-
 const ProjectContent = (props) => {
 
   let progressBarStyle = props.project ?
     { width: `${props.project.currentFunding / props.project.fundingGoal * 100}%` }
     :
     null;
-  let daysRemaining = props.project ? props.project.fundingDuration - calcDateDiff(props.project.createdAt) : 0
+
+  let daysRemaining = props.project ? props.project.fundingDuration - props.calcDateDiff(props.project.createdAt) : 0
   daysRemaining = daysRemaining > 0 ?
     <div>
-      <h4 className='left-align' style={{ fontWeight: 'bold' }}>{numberWithCommas(daysRemaining)}</h4>
+      <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.numberWithCommas(daysRemaining)}</h4>
       <h6 className='left-align' style={{ margin: '-10px 0px 20px' }}>Days to go</h6>
       <Collapsible>
         <CollapsibleItem header='Support This Project' >
@@ -30,7 +21,9 @@ const ProjectContent = (props) => {
             {...props}
             user={props.user}
             project={props.project}
-            handleSupportProjectForm={props.handleSupportProjectForm}
+            donation={props.donation}
+            handleChange={props.handleChange}
+            handleSubmit={props.handleSubmit}
           />
         </CollapsibleItem>
       </Collapsible>
@@ -59,9 +52,9 @@ const ProjectContent = (props) => {
           <div className='progress'>
             <div className='determinate' style={progressBarStyle}></div>
           </div>
-          <h4 className='left-align' style={{ fontWeight: 'bold' }}>${numberWithCommas(props.project.currentFunding)}</h4>
-          <h6 className='left-align'>pledged of ${numberWithCommas(props.project.fundingGoal)} goal</h6>
-          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{numberWithCommas(props.project.backers.length)}</h4>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>${props.numberWithCommas(props.project.currentFunding)}</h4>
+          <h6 className='left-align'>pledged of ${props.numberWithCommas(props.project.fundingGoal)} goal</h6>
+          <h4 className='left-align' style={{ fontWeight: 'bold' }}>{props.numberWithCommas(props.project.backers.length)}</h4>
           <h6 className='left-align' style={{ marginTop: '-10px' }}>Backers</h6>
           {daysRemaining}
         </div>
