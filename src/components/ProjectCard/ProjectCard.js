@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 const ProjectCard = (props) => {
   let project = props.project;
   let uri = project.title.replace(/\s/g, "").toLowerCase();
@@ -34,7 +30,7 @@ const ProjectCard = (props) => {
           <div className='progress'>
             <div className='determinate' style={progressBarStyle}></div>
           </div>
-          <p>${numberWithCommas(project.currentFunding)} pledged</p>
+          <p>${props.numberWithCommas(project.currentFunding)} pledged</p>
           <p>{percentage}% funded</p>
           <p style={{ margin: '10px 0 -10px' }}>Category: {project.category}</p>
         </div>

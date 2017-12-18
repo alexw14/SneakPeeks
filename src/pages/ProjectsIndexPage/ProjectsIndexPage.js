@@ -14,15 +14,28 @@ class ProjectsIndexPage extends Component {
     this.setState({ search: e.target.value });
   }
 
+  numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   render() {
     let projectList = this.props.projects ?
-      this.props.projects.map(project => <ProjectCard key={project._id} project={project} />)
+      this.props.projects.map(project =>
+        <ProjectCard
+          key={project._id}
+          project={project}
+          numberWithCommas={this.numberWithCommas}
+        />)
       :
       <h1>Loading</h1>
 
     if (this.state.search !== 'All') {
-      projectList = this.props.projects.filter(project => project.category === this.state.search)
-        .map(project => <ProjectCard key={project._id} project={project} />)
+      projectList = this.props.projects.filter(project => project.category === this.state.search).map(project => 
+        <ProjectCard 
+          key={project._id} 
+          project={project}
+          numberWithCommas={this.numberWithCommas}          
+        />)
     }
 
     return (
@@ -39,7 +52,6 @@ class ProjectsIndexPage extends Component {
       </div>
     )
   }
-
 }
 
 export default ProjectsIndexPage;
