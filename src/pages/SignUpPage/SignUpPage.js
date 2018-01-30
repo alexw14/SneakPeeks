@@ -35,7 +35,7 @@ class SignUpPage extends Component {
         this.props.handleSignUp();
         this.props.history.push('/');
       })
-      .catch(err => this.props.updateMessage(err.message));
+      .catch(err => this.updateMessage(err.message));
   }
 
   isFormValid = () => {
